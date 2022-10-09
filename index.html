@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>My First Heading</h1>
+<p>My first paragraph.</p>
+<script>
+    let socket= new WebSocket("ws://localhost:8080/ws")
+    console.log("Attempting websocket connection")
+
+    socket.onopen=()=>{
+        console.log("Successfully connected")
+        socket.send("Hi from client")
+        socket.send("Hello")
+    }
+    socket.onclose=(event)=>{
+        console.log("Socket connection closed",event)
+    }
+    socket.onmessage=(msg)=>{
+        console.log("Message",msg)
+    }
+    socket.onerror=(error)=>{
+        console.log("Socket connection error",error)
+    }
+
+
+</script>
+
+</body>
+</html>
